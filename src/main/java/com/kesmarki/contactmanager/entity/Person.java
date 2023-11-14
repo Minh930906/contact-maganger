@@ -2,8 +2,8 @@ package com.kesmarki.contactmanager.entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Table
@@ -24,7 +24,7 @@ public class Person {
     private String name;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-    private List<Address> addresses = new ArrayList<>();
+    private List<Address> addresses;
 
     public Long getId() {
         return id;

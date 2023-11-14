@@ -9,11 +9,10 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(Long id, String type, String contactValue, Address address) {
+    public Contact(Long id, String type, String contactValue) {
         this.id = id;
         this.type = type;
         this.contactValue = contactValue;
-        this.address = address;
     }
 
     @Id
@@ -49,13 +48,5 @@ public class Contact {
 
     public void setContactValue(String contactValue) {
         this.contactValue = contactValue;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 }

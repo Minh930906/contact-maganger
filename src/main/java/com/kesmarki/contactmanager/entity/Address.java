@@ -2,7 +2,6 @@ package com.kesmarki.contactmanager.entity;
 
 
 import jakarta.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,7 +34,7 @@ public class Address {
     private Person person;
 
     @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
-    private List<Contact> contacts = new ArrayList<>();
+    private List<Contact> contacts;
 
     public Long getId() {
         return id;
@@ -69,20 +68,12 @@ public class Address {
         this.city = city;
     }
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public List<Contact> getContacts() {
+    public List<Contact> getContact() {
         return contacts;
     }
 
-    public void setContacts(List<Contact> contacts) {
-        this.contacts = contacts;
+    public void setContacts(List<Contact> contact) {
+        this.contacts = contact;
     }
 }
 
