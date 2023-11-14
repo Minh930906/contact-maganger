@@ -1,6 +1,7 @@
 package com.kesmarki.contactmanager.service;
 
 import com.kesmarki.contactmanager.entity.Person;
+import com.kesmarki.contactmanager.exception.PersonNotFoundException;
 import com.kesmarki.contactmanager.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class PersonService {
     }
 
     public Person getPersonById(Long id) {
-        return personRepository.findById(id).orElse(null);
+        return personRepository.findById(id).orElseThrow(() -> new PersonNotFoundException(id));
     }
 
     public Person savePerson(Person person) {
