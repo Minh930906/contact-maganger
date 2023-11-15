@@ -18,7 +18,7 @@ public class PersonController {
     private PersonService personService;
 
     @GetMapping
-    public List<Person> getAllPersons() {
+    public List<ResponsePersonDto> getAllPersons() {
         return personService.getAllPersons();
     }
 
