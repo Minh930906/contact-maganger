@@ -68,7 +68,15 @@ public class Address {
         this.city = city;
     }
 
-    public List<Contact> getContact() {
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public List<Contact> getContacts() {
         return contacts;
     }
 

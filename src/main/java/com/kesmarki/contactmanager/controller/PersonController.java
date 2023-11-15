@@ -1,5 +1,7 @@
 package com.kesmarki.contactmanager.controller;
 
+import com.kesmarki.contactmanager.dto.RequestPersonDto;
+import com.kesmarki.contactmanager.dto.ResponsePersonDto;
 import com.kesmarki.contactmanager.entity.Person;
 import com.kesmarki.contactmanager.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,26 +23,21 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Person> getPersonById(@PathVariable Long id) {
-        Person person = personService.getPersonById(id);
-        return ResponseEntity.ok(person);
+    public ResponseEntity<ResponsePersonDto> getPersonById(@PathVariable Long id) {
+        ResponsePersonDto personById = personService.getPersonById(id);
+        return ResponseEntity.ok().body(personById);
     }
 
     @PostMapping
-    public ResponseEntity<Person> savePerson(@RequestBody Person person) {
-        Person savedPerson = personService.savePerson(person);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedPerson);
+    public ResponseEntity<Void> savePerson(@RequestBody RequestPersonDto person) {
+        personService.savePerson(person);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Person> updatePerson(@PathVariable Long id, @RequestBody Person person) {
-        if (personService.getPersonById(id)==null) {
-            return ResponseEntity.notFound().build();
-        }
-
-        person.setId(id);
-        Person updatedPerson = personService.savePerson(person);
-        return ResponseEntity.ok(updatedPerson);
+    public ResponseEntity<Person> updatePerson(@PathVariable Long id, @RequestBody RequestPersonDto person) {
+        personService.savePerson(id,person);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

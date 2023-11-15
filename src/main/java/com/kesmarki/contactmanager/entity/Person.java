@@ -1,5 +1,6 @@
 package com.kesmarki.contactmanager.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class Person {
     private String name;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Address> addresses;
 
     public Long getId() {

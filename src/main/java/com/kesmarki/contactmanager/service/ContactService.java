@@ -21,6 +21,10 @@ public class ContactService {
         return contactRepository.findById(id).orElseThrow(() -> new ContactNotFoundException(id));
     }
 
+    public List<Contact> getContactByAddressId(Long id) {
+        return contactRepository.findAllByAddressId(id);
+    }
+
     public Contact saveContact(Contact contact) {
         return contactRepository.save(contact);
     }

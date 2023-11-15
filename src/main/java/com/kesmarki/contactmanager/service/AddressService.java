@@ -20,6 +20,9 @@ public class AddressService {
     public Address getAddressById(Long id) {
         return addressRepository.findById(id).orElseThrow(() -> new AddressNotFoundException(id));
     }
+    public List<Address> getAddressesByPersonId(Long id) {
+        return addressRepository.findAllByPersonId(id);
+    }
 
     public Address saveAddress(Address address) {
         return addressRepository.save(address);

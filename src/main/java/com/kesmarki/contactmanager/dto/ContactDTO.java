@@ -1,30 +1,18 @@
-package com.kesmarki.contactmanager.entity;
+package com.kesmarki.contactmanager.dto;
 
-
-import jakarta.persistence.*;
-
-@Entity
-@Table
-public class Contact {
-    public Contact() {
+public class ContactDTO {
+    public ContactDTO() {
     }
 
-    public Contact(Long id, String type, String contactValue) {
+    public ContactDTO(Long id, String type, String contactValue) {
         this.id = id;
         this.type = type;
         this.contactValue = contactValue;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
     private String type;
     private String contactValue;
-
-    @ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address;
 
     public Long getId() {
         return id;
@@ -48,13 +36,5 @@ public class Contact {
 
     public void setContactValue(String contactValue) {
         this.contactValue = contactValue;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 }
